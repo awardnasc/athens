@@ -99,10 +99,10 @@ func (p *protocol) List(ctx context.Context, mod string) ([]string, error) {
 
 	// if i.e. github is unavailable we should fail as well so that the behavior of the proxy is stable.
 	// otherwise we will get different results the next time because i.e. GH is up again
-	isUnexpGoErr := goErr != nil && !errors.IsRepoNotFoundErr(goErr)
-	if isUnexpGoErr {
-		return nil, errors.E(op, goErr)
-	}
+	// isUnexpGoErr := goErr != nil && !errors.IsRepoNotFoundErr(goErr)
+	// if isUnexpGoErr {
+	// 	return nil, errors.E(op, goErr)
+	// }
 
 	isRepoNotFoundErr := goErr != nil && errors.IsRepoNotFoundErr(goErr)
 	storageEmpty := len(strList) == 0
